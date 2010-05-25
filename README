@@ -1,0 +1,73 @@
+Installer idea
+
+
+Problem: Installing programs is complicated for non-computer literate people and requires too many steps. We want a standardized cross platform way of installing programs in-browser. This will also increase conversion.
+
+Solution: Framework that can be bundled with applications. Allows websites to offer downloads in a way similar to Adobe Air:
+
+Badge with point to action (Download)
+If framework is detected, install in browser.
+
+Features:
+Install in browser
+Update in browser
+Detect if app is installed (offer updates)
+JavaScript/Flash API
+Cross platform (Linux/OSX/Win)
+Expose platform information in plugin
+Platform type (osx/linux/win)
+Platform architecture (32/64 bit)
+
+How will it work? 
+
+Browser plugin built in - http://code.google.com/p/firebreath/
+Exposes JavaScript API (below). 
+Apps use the JS api to provide a badge, allowing an in-browser install.
+Considerations
+
+Must be very small & inexpensive.
+
+Developer framework shared between applications, viral in other words.
+
+Documented API - make a standard?
+
+Security! Limited system access. Need to display a prominent message to the user. We could use certificates to prove authenticity.
+
+Can we tap into the way Adobe Air is installed?
+
+Names?
+
+curl
+zlib
+Questions
+
+What kind of programs could be installed ?
+Any
+
+API
+
+var installer = new Installer(app_id, options);
+installer.install(options);
+installer.platform
+installer.arch
+
+// if app is installed
+installer.isInstalled(); // {version:0.4}
+
+// if installer is installed
+Installer.isInstalled()  // {version: 0.4}
+
+init options:
+app: url
+mac: url for mac version
+win: url for windows version
+linux: url for linux version
+name: app name
+version: app version
+
+install options:
+autorun: Auto run app on install
+progress: function gets called on download progress
+complete: function gets called on installation
+
+
